@@ -2,15 +2,41 @@
 
 using namespace std;
 
-
+template <class type> struct s{
+  type t;
+  s(type t):t(t){};
+};
 
 int main(){
 
-  int y = 0;
+  int array[5][5], count = 1;
 
-  auto max = [=](int x){ x > y ? cout << x : cout << y; cout << endl; };
+  for(int i = 0; i < 5; i++)
+    for(int j = 0; j < 5; j++)
+      array[i][j] = count++;
 
-  max(5);
+  int * p = array[0];
+
+  // for(int i = 0; i < 5; i++){
+  //   for(int j = 0; j < 5; j++){
+  //     cout << p[i*5 + j] << "\t";
+  //   }
+  //   cout << "\n";
+  // }
+
+  auto m_lambda = [](int *p, int nxn){
+    for(int i = 0; i < nxn; i++){
+      for(int j = 0; j < nxn; j++){
+        cout << p[i*nxn + j] << "\t";
+      }
+      cout << "\n";
+    }
+  };
+
+  m_lambda(p,5);
+
+
+
 
 
 }
