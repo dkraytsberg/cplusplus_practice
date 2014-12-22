@@ -29,5 +29,16 @@ int main(){
 
   m_lambda(p,5);
 
+  {
+    int x = 0, y = 10;
+
+    // auto greater = [](int x, int y) -> int{
+    //   if(y > x) return y; return x;
+    // };
+    cout << [](int x, int y){
+      return (x > y ? x : y);
+    }(x,y) << endl;
+  }
+
 
 }

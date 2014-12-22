@@ -30,11 +30,21 @@ public:
   }
 };
 
+int p(int x, int y){
+  return (x > y ? x : y);
+}
+
 int main(){
 
-  holder<int> h;
+  int x = 0, y = 10;
 
-  string x;
-  cout << x << endl;
+  (x > 0) ? x = 1 : x = x;
+  // auto greater = [](int x, int y) -> int{
+  //   if(y > x) return y; return x;
+  // };
+  cout << [](int x, int y){
+    if(y > x) return y; return x;
+  }(x,y) << endl;
+
 
 }
