@@ -40,14 +40,14 @@ public:
       return ptr[--size];
 
   }
-  bool contains(T t){
+  int contains(T t){
     for(int i = 0; i < size; i++){
       if(ptr[i] == t)
-        return true;
+        return i+1;
       else if(ptr[i] < t)
         break;
     }
-    return false;
+    return 0;
   }
   void print(){
     for(int i = size - 1; i >= 0; i--)
@@ -60,7 +60,7 @@ struct node{
   int type, x, y, f, g, h;
   node(int x, int y): x(x),y(y),type(REG) {}
   node(int x, int y, int type): x(x),y(y),type(type) {}
-  
+
   bool operator> (node other){ return (f > other.f ? true : false); }
   bool operator< (node other){ return (f < other.f ? true : false); }
   bool operator== (node other){
@@ -75,6 +75,12 @@ struct node{
 
 int main(){
   priority_q<int> q;
+
+  q.add(0);
+  q.add(10);
+  q.add(20);
+  if(q.contains(10))
+    q.print();
 
 
 
