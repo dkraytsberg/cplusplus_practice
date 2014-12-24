@@ -1,4 +1,7 @@
 #include <iostream>
+#include <string>
+#include <ctime>
+#include <cstdlib>
 
 using namespace std;
 
@@ -25,20 +28,15 @@ public:
       max *= 2;
     }
     //sort
-    for(int i = 0; i < size; i++){
-      if(t > ptr[i]){
-        T temp = ptr[i];
-        ptr[i] = t;
-        t = temp;
-      }
-    }
+    for(int i = 0; i < size; i++)
+      if(t > ptr[i])
+        swap(ptr[i],t);
 
     ptr[size++] = t;
   }
   T remove(){
     if(size > 0)
       return ptr[--size];
-
   }
   int contains(T t){
     for(int i = 0; i < size; i++){
@@ -49,9 +47,29 @@ public:
     }
     return 0;
   }
+
+  void modify(int i,T t){
+    i--;
+    T old = ptr[i];
+    ptr[i] = t;
+    if(ptr[i] < old){
+      while(i < size-1 && ptr[i] < ptr[i+1]){
+        swap(ptr[i],ptr[i+1]);
+        i++;
+      }
+    }
+  }
+  int operator[](T t){
+    return contains(t);
+  }
+  void swap(T& t1, T& t2){
+    T temp = t1;
+    t1 = t2;
+    t2 = temp;
+  }
   void print(){
-    for(int i = size - 1; i >= 0; i--)
-      cout << ptr[i] << endl;
+    for(int i = 0; i < size; i++)
+      ptr[i].print();//cout << ptr[i] << endl;
   }
 };
 
@@ -68,19 +86,27 @@ struct node{
   bool operator+ (int add){ return f+add; }
   bool operator- (int subt){ return f-subt; }
 
+  void print(){ cout<<"x: "<<x<<" y: "<<y<<" f: "<<f<<endl; }
+
 };
 
 
 
-
 int main(){
-  priority_q<int> q;
+  //priority_q<int> q;
 
-  q.add(0);
-  q.add(10);
-  q.add(20);
-  if(q.contains(10))
-    q.print();
+  //IMPORTANT
+  //array of pointers to object that must all be
+  //allocated dynamically
+  node ** node_ptr = new node *[5];
+  for(int i = 0; i < 5; i++){
+    node_ptr[i] = new node(i,i);
+  }
+  for(int i = 0; i < 5; i++){
+    node_ptr[i]->print();
+    delete node_ptr[i];
+  }
+  delete[] node_ptr;
 
 
 
