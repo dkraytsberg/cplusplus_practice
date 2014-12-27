@@ -92,26 +92,19 @@ struct node{
 
 
 
-int main(){
-  //priority_q<int> q;
-
-  //IMPORTANT
-  //array of pointers to object that must all be
-  //allocated dynamically
-  node ** node_ptr = new node *[5];
-  for(int i = 0; i < 5; i++){
-    node_ptr[i] = new node(i,i);
-  }
-  for(int i = 0; i < 5; i++){
-    node_ptr[i]->print();
-    delete node_ptr[i];
-  }
-  delete[] node_ptr;
-
-
-
-
-
-
-
-}
+// int main(){
+//   //priority_q<int> q;
+//
+//   //IMPORTANT
+//   //array of pointers to object that must all be
+//   //allocated dynamically
+//   node ** node_ptr = new node *[5];
+//   for(int i = 0; i < 5; i++){
+//     node_ptr[i] = new node(i,i);
+//   }
+//   for(int i = 0; i < 5; i++){
+//     node_ptr[i]->print();
+//     delete node_ptr[i];
+//   }
+//   delete[] node_ptr;
+// }
